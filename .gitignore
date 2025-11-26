@@ -1,3 +1,3 @@
-data/
+Matlab/data/
 *.asv
-deeplearning/dataset
+Matlab/config/

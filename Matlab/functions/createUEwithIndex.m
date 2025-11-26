@@ -1,0 +1,16 @@
+function params = createUEwithIndex(params,combi)
+    load(params.infra.UE.configFile,"uelat","uelon");
+    userindex = combi;
+    if length(combi) ~= params.infra.UE.number
+        error('The length of combi must match the number of UEs specified in params.infra.UE.number.');
+    end
+    params.infra.UE.originalIndex = userindex;
+    params.infra.UE.latitude = uelat(userindex);
+    params.infra.UE.longitude = uelon(userindex);
+    params.infra.UE.rxsite = rxsite("Name",params.infra.UE.name,...
+                "Latitude",params.infra.UE.latitude,...
+                "Longitude",params.infra.UE.longitude,...
+                "Antenna",params.infra.UE.antenna,...
+                "AntennaHeight",params.infra.UE.antennaHeight,...
+                "ReceiverSensitivity",params.infra.RS.receiverSensitivitydB);
+end
